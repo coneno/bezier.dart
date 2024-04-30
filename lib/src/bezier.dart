@@ -746,15 +746,9 @@ abstract class Bezier {
 
     final maxIndex = lookUpTable.length - 1;
 
-    if (index == 0) {
-      return 0.0;
-    } else if (index == maxIndex) {
-      return 1.0;
-    }
-
     final intervalsCount = maxIndex.toDouble();
-    final t1 = (index - 1) / intervalsCount;
-    final t2 = (index + 1) / intervalsCount;
+    final t1 = max(0.0, (index - 1) / intervalsCount);
+    final t2 = min(1.0, (index + 1) / intervalsCount);
 
     final tIncrement = stepSize / intervalsCount;
     final maxT = t2 + tIncrement;
